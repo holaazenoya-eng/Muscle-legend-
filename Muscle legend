@@ -1,0 +1,145 @@
+local remote = game:GetService("Players").LocalPlayer:WaitForChild("muscleEvent")
+local rebirthRemote = game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebirthRemote")
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "RepGui"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+-- KEY SYSTEM FRAME
+local keyFrame = Instance.new("Frame")
+keyFrame.Size = UDim2.new(0, 280, 0, 260)
+keyFrame.Position = UDim2.new(0.5, -140, 0.5, -130)
+keyFrame.BackgroundColor3 = Color3.fromRGB(20,20,25)
+keyFrame.Active = true
+keyFrame.Draggable = true
+keyFrame.Parent = gui
+Instance.new("UICorner", keyFrame).CornerRadius = UDim.new(0,12)
+local kfStroke = Instance.new("UIStroke", keyFrame)
+kfStroke.Color = Color3.fromRGB(60,60,70)
+kfStroke.Thickness = 1.5
+
+local keyTitle = Instance.new("TextLabel")
+keyTitle.Size = UDim2.new(1,0,0,35)
+keyTitle.Position = UDim2.new(0,0,0,5)
+keyTitle.Text = "🔐 Zen Hub - Key System"
+keyTitle.Font = Enum.Font.GothamBold
+keyTitle.TextSize = 16
+keyTitle.TextColor3 = Color3.new(1,1,1)
+keyTitle.BackgroundTransparency = 1
+keyTitle.Parent = keyFrame
+
+local madeBy = Instance.new("TextLabel")
+madeBy.Size = UDim2.new(1,0,0,20)
+madeBy.Position = UDim2.new(0,0,0,35)
+madeBy.Text = "Made by Zen"
+madeBy.Font = Enum.Font.Gotham
+madeBy.TextSize = 13
+madeBy.TextColor3 = Color3.fromRGB(180,180,180)
+madeBy.BackgroundTransparency = 1
+madeBy.Parent = keyFrame
+
+local keyBox = Instance.new("TextBox")
+keyBox.Size = UDim2.new(0, 240, 0, 45)
+keyBox.Position = UDim2.new(0,20,0,65)
+keyBox.PlaceholderText = "Enter Key..."
+keyBox.Text = ""
+keyBox.Font = Enum.Font.GothamBold
+keyBox.TextSize = 14
+keyBox.BackgroundColor3 = Color3.fromRGB(40,40,45)
+keyBox.TextColor3 = Color3.new(1,1,1)
+keyBox.Parent = keyFrame
+Instance.new("UICorner", keyBox).CornerRadius = UDim.new(0,8)
+local kbStroke = Instance.new("UIStroke", keyBox)
+kbStroke.Color = Color3.fromRGB(60,60,70)
+kbStroke.Thickness = 1
+
+local submitBtn = Instance.new("TextButton")
+submitBtn.Size = UDim2.new(0, 240, 0, 45)
+submitBtn.Position = UDim2.new(0,20,0,120)
+submitBtn.Text = "✅ Unlock"
+submitBtn.Font = Enum.Font.GothamBold
+submitBtn.TextSize = 14
+submitBtn.BackgroundColor3 = Color3.fromRGB(0,140,255)
+submitBtn.TextColor3 = Color3.new(1,1,1)
+submitBtn.Parent = keyFrame
+Instance.new("UICorner", submitBtn).CornerRadius = UDim.new(0,8)
+
+local discordBtn = Instance.new("TextButton")
+discordBtn.Size = UDim2.new(0, 240, 0, 40)
+discordBtn.Position = UDim2.new(0,20,0,175)
+discordBtn.Text = "💬 Get Key on Discord"
+discordBtn.Font = Enum.Font.GothamBold
+discordBtn.TextSize = 13
+discordBtn.BackgroundColor3 = Color3.fromRGB(88,101,242)
+discordBtn.TextColor3 = Color3.new(1,1,1)
+discordBtn.Parent = keyFrame
+Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0,8)
+
+local status = Instance.new("TextLabel")
+status.Size = UDim2.new(1,0,0,20)
+status.Position = UDim2.new(0,0,0,225)
+status.Text = "Join discord to get key"
+status.Font = Enum.Font.Gotham
+status.TextSize = 11
+status.TextColor3 = Color3.fromRGB(140,140,150)
+status.BackgroundTransparency = 1
+status.Parent = keyFrame
+
+-- MAIN FRAME (hidden)
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 240, 0, 260)
+frame.Position = UDim2.new(0.5, -120, 0.5, -130)
+frame.BackgroundColor3 = Color3.fromRGB(20,20,25)
+frame.Active = true
+frame.Draggable = true
+frame.Visible = false
+frame.Parent = gui
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0,12)
+local fStroke = Instance.new("UIStroke", frame)
+fStroke.Color = Color3.fromRGB(60,60,70)
+fStroke.Thickness = 1.5
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1,-80,0,40)
+title.Position = UDim2.new(0,15,0,0)
+title.Text = "💪 Muscle Legends"
+title.Font = Enum.Font.GothamBold
+title.TextSize = 16
+title.TextColor3 = Color3.new(1,1,1)
+title.BackgroundTransparency = 1
+title.TextXAlignment = Enum.TextXAlignment.Left
+title.Parent = frame
+
+local zenLabel = Instance.new("TextLabel")
+zenLabel.Size = UDim2.new(0,100,0,15)
+zenLabel.Position = UDim2.new(0,15,0,30)
+zenLabel.Text = "Made by Zen"
+zenLabel.Font = Enum.Font.Gotham
+zenLabel.TextSize = 10
+zenLabel.TextColor3 = Color3.fromRGB(120,120,130)
+zenLabel.BackgroundTransparency = 1
+zenLabel.TextXAlignment = Enum.TextXAlignment.Left
+zenLabel.Parent = frame
+
+local close = Instance.new("TextButton")
+close.Size = UDim2.new(0,32,0,32)
+close.Position = UDim2.new(1,-38,0,6)
+close.Text = "✕"
+close.Font = Enum.Font.GothamBold
+close.TextSize = 16
+close.BackgroundColor3 = Color3.fromRGB(45,45,50)
+close.TextColor3 = Color3.new(1,1,1)
+close.Parent = frame
+Instance.new("UICorner", close).CornerRadius = UDim.new(0,8)
+
+local minimize = Instance.new("TextButton")
+minimize.Size = UDim2.new(0,32,0,32)
+minimize.Position = UDim2.new(1,-76,0,6)
+minimize.Text = "-"
+minimize.Font = Enum.Font.GothamBold
+minimize.TextSize = 18
+minimize.BackgroundColor3 = Color3.fromRGB(45,45,50)
+minimize.TextColor3 = Color3.new(1,1,1)
+minimize.Parent = frame
+Instance.new("UICorner", mini
